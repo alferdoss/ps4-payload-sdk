@@ -10,7 +10,10 @@ OBJS	:= $(patsubst $(SDIR)/%.c, build/%.o, $(CFILES)) $(patsubst $(SDIR)/%.s, bu
 
 TARGET = libPS4.a
 
-$(TARGET): $(ODIR) $(OBJS)
+$(IDIR)/fw_defines.h: ../generate_fw_defines.sh ../ps4-offsets/*.h
+	../generate_fw_defines.sh
+
+$(TARGET): $(IDIR)/fw_defines.h $(ODIR) $(OBJS)
 	$(AR) rcs $@ $(OBJS)
 
 $(ODIR)/%.o: $(SDIR)/%.c
