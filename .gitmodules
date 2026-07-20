@@ -1,0 +1,3 @@
+[submodule "ps4-offsets"]
+	path = ps4-offsets
+	url = git@github.com:alferdoss/ps4-offsets.git
